@@ -21,6 +21,9 @@ struct X11_wrapper {
 	XdbeSwapInfo swap_info;
 };
 
+struct pendulum {
+};
+
 //GLOBAL OBJECTS///////
 struct X11_wrapper x11;
 struct global g;
@@ -149,6 +152,12 @@ void check_mouse(XEvent *e)
         }
 }
 
+void clear_screen()
+{
+	XSetForeground(x11.dpy, x11.gc, 0xffffffff);
+	XFillRectangle(x11.dpy, x11.back_buffer, x11.gc, 0, 0, g.xres, g.yres);
+}
+
 void destroy()
 {
 	if(!XdbeDeallocateBackBufferName(x11.dpy, x11.back_buffer)) {
@@ -164,7 +173,10 @@ void destroy()
 void physics() {}
 
 //Rendering
-void render() {}
+void render()
+{
+	clear_screen();
+}
 
 //Main Loop
 int main()
