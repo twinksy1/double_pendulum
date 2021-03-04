@@ -9,4 +9,4 @@
 Then in cloned directory:
 * **Build**: *make*
 ---
-Execution: ***./sort***
+Execution: ***./main***
